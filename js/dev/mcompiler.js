@@ -10,8 +10,9 @@
 
         that.bp = settings.bp || backpack();
         that.eventPrefix = settings.eventPrefix || "spa-";
-        that.$rootScope = settings.rootScope;
-        that.templateService = settings.templateService;
+        that.$rootScope = settings.rootScope || that.$rootScope;
+        that.templateService = settings.templateService || that.templateService;
+        that.templateType = settings.templateType || that.templateType;
 
         if (!that.templateService) {
             console.error("must define a template service provider");
@@ -35,6 +36,33 @@
         eventPrefix: "spa-",
         $rootScope: undefined,
         templateService: undefined,
+        templateType: "text/x-mustache-template",
+
+        getTemplates: function (remove) {
+
+            var i, temp,
+                t = document.querySelectorAll("script[type='" + this.settings.templateType + "']"),
+                templates = $.parseLocalStorage("templates");
+
+            for (i = 0; i < t.length; i++) {
+
+                temp = t[i];
+
+                that.templateService.setTemplate(temp.id,
+                                    temp.innerHTML.replace(/(\r\n|\n|\r)/gm, ""));
+
+                if (remove) {
+
+                    if (temp.parentNode) {
+                        temp.parentNode.removeChild(temp);
+                    }
+                }
+
+            }
+
+            localStorage.setItem("templates", JSON.stringify(templates));
+
+        },
 
 
 
