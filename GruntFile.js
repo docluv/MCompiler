@@ -37,38 +37,16 @@ module.exports = function (grunt) {
             //'<%= grunt.template.today("yyyy-mm-dd") %> */'
             //    },
 
-            dollarbill: {
+            mcompiler: {
                 options: {
                     banner: '<%= banner %>'
                 },
                 src: [
                 'js/dev/mcompiler.js',
-                'js/dev/mcompiler.localStorage.js',
-                'js/dev/mcompiler.cssClass.js',
-                'js/dev/mcompiler.visibility.js',
-                'js/dev/mcompiler.utils.js',
-                'js/dev/mcompiler.css.js',
-                'js/dev/mcompiler.element.js',
-                'js/dev/mcompiler.events.js',
-                'js/dev/mcompiler.manipulate.js',
-                'js/dev/mcompiler.load.js',
-                'js/dev/mcompiler.utils.js'
+                'js/dev/services/*.js'
                 ],
                 dest: 'js/<%= pkg.name %>.min.js'
-            },
-            dollarbillMovie: {
-                src: [
-                'js/dev/mcompiler.js',
-                'js/dev/mcompiler.localStorage.js',
-                'js/dev/mcompiler.cssClass.js',
-                'js/dev/mcompiler.visibility.js',
-                'js/dev/mcompiler.utils.js',
-                'js/dev/mcompiler.load.js',
-                'js/dev/mcompiler.utils.js'
-                ],
-                dest: 'js/movie/<%= pkg.name %>.min.js'
             }
-
 
         }
     });

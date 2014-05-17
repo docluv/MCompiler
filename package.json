@@ -3,7 +3,7 @@
   "homepage": "https://github.com/docluv/mcompiler",
   "author": "Chris Love",
   "license": {
-    "type": "Apache",
+    "type": "MIT",
     "url": "https://github.com/docluv/mcompiler/LICENSE"
   },
   "version": "0.0.1",
