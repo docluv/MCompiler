@@ -3,16 +3,16 @@
 
 (function (window, mustache, undefined) {
 
-    var mustachService = function () {
+    var mustacheService = function () {
 
-        return new mustachService.fn.init();
+        return new mustacheService.fn.init();
 
     };
 
 
-    mustachService.fn = mustachService.prototype = {
+    mustacheService.fn = mustacheService.prototype = {
 
-        constructor: mustachService,
+        constructor: mustacheService,
 
         init: function (customSettings) {
             return this;
@@ -67,14 +67,14 @@
     };
 
 
-    // Give the init function the mustachService prototype for later instantiation
-    mustachService.fn.init.prototype = mustachService.fn;
+    // Give the init function the mustacheService prototype for later instantiation
+    mustacheService.fn.init.prototype = mustacheService.fn;
 
 
-    //create the global object used to create new instances of mustachService
-    return (window.mustachService = mustachService);
+    //create the global object used to create new instances of mustacheService
+    return (window.mustacheService = mustacheService);
 
 
-})(window, mustache);
+})(window, Mustache);
 
 

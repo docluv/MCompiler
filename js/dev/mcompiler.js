@@ -41,8 +41,9 @@
         getTemplates: function (remove) {
 
             var i, temp,
-                t = document.querySelectorAll("script[type='" + this.settings.templateType + "']"),
-                templates = $.parseLocalStorage("templates");
+                t = document.querySelectorAll("script[type='" + this.settings.templateType + "']");
+                
+                that.templateService.setTemplates($.parseLocalStorage("templates"));
 
             for (i = 0; i < t.length; i++) {
 
@@ -60,7 +61,8 @@
 
             }
 
-            localStorage.setItem("templates", JSON.stringify(templates));
+            localStorage.setItem("templates", 
+                    that.templateService.getTemplates());
 
         },
 
