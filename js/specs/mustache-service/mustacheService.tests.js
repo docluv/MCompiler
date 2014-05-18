@@ -17,7 +17,7 @@ test("Verify We Have mustacheService with expected members", function () {
     isFunction(mustacheService, "mustacheService object should exist");
     isFunction(mustacheService.fn.init, "init function should exist");
     ok(mustacheService.fn.version, "version should exist");
-    isObject(mustacheService.fn.tempalates, "tempalates should exist");
+    isObject(mustacheService.fn.templates, "templates should exist");
     isFunction(mustacheService.fn.setTemplate, "setTemplate function should exist");
     isFunction(mustacheService.fn.setTemplates, "setTemplates function should exist");
     isFunction(mustacheService.fn.getTemplate, "getTemplate function should exist");
@@ -46,73 +46,23 @@ test("Verify getTemplates returns {} when no templates have been added", functio
 
 });
 
-/*
-test("Verify can a new mustacheService instance and the 1st element is the target element", function () {
+test("Verify setTemplate adds the template to the internal collection using the specified key", function () {
 
-    var selector = ".operation-body",
-        $ob = $(selector);
+    var $ms = mustacheService(),
+        template = "{{Title}}",
+        key = "testTemplate",
+        title = "Hello World",
+        testData = { Title: title },
+        merged = "";
 
-    equal(typeof $ob, "object", "mustacheService object should exist");
-    equal($ob.length, 1, "mustacheService.length should be 1");
-    equal($ob.selector, selector, "mustacheService.selector should be " + selector);
-    equal($ob[0], document.querySelector(selector), "should be the target node");
+    $ms.setTemplate(key, template);
 
-});
+    isFunction($ms.templates[key], "the new template should be a function because it is compiled");
 
-test("Verify can a mustacheService.trim can trim leading and trailing spaces", function () {
+    merged = $ms.mergeData(key, testData);
 
-    var testString = " test ",
-        expect = "test",
-        $ob = $(),
-        result = $ob.trim(testString);
-
-    equal(result, expect, "trim should remove leading and trailing spaces");
-
-});
-
-test("Verify can a mustacheService.trim can trim leading space", function () {
-
-    var testString = " test",
-        expect = "test",
-        $ob = $(),
-        result = $ob.trim(testString);
-
-    equal(result, expect, "trim should remove leading space");
-
-});
-
-test("Verify can a mustacheService.trim can trim trailing space", function () {
-
-    var testString = "test ",
-        expect = "test",
-        $ob = $(),
-        result = $ob.trim(testString);
-
-    equal(result, expect, "trim should remove trailing space");
-
-});
-
-test("Verify can a mustacheService.isArray can identify an array", function () {
-
-    var testArray = [],
-        expect = true,
-        $ob = $(),
-        result = $ob.isArray(testArray);
-
-    equal(result, expect, "trim should be true");
-
-});
-
-test("Verify can a mustacheService.isArray won't identify an object as an array", function () {
-
-    var testArray = {},
-        expect = false,
-        $ob = $(),
-        result = $ob.isArray(testArray);
-
-    equal(result, expect, "trim should be false");
+    equal(merged, title, "should be '" + title + "'");
 
 });
 
 
-*/

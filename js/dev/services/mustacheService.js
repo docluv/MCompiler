@@ -20,7 +20,7 @@
 
         version: "0.0.1",
 
-        tempalates: {},
+        templates: {},
 
 
         setTemplate: function (key, template) {
@@ -42,7 +42,7 @@
         },
 
         getTemplates: function () {
-            return this.tempalates;
+            return this.templates;
         },
 
         removeTemplate: function (key) {
